@@ -3944,3 +3944,30 @@ body {
   position: relative;
   z-index: 2;
 }
+/* FIX: Let the invitation card slide up on mobile */
+@media screen and (max-width: 768px) {
+  #envelopeIntro .envelope-card {
+    transform: translateY(0) !important;
+    transition: transform 1s cubic-bezier(.2, .75, .25, 1);
+  }
+
+  #envelopeIntro.is-opening .envelope-card {
+    transform: translateY(-48%) !important;
+    transition-delay: 0.25s;
+  }
+}
+/* Fix P-K logo spacing and heart visibility */
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.brand span {
+  display: inline-block;
+  line-height: 1;
+  color: #f4c7d8;
+  font-size: 18px;
+  opacity: 1;
+  visibility: visible;
+}
