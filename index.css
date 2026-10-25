@@ -3927,3 +3927,20 @@ body {
     visibility: visible !important;
   }
 }
+/* Keep falling petals behind text and icons */
+.petal,
+.petal-container,
+.rose-petal {
+  pointer-events: none;
+}
+
+/* Keep countdown content above decorative petals */
+.countdown-section,
+.countdown-section h1,
+.countdown-section h2,
+.countdown-section p,
+.countdown-section span,
+.countdown-section svg {
+  position: relative;
+  z-index: 2;
+}
