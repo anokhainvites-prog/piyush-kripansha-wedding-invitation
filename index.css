@@ -3815,15 +3815,25 @@ body {
     max-height: none !important;
     overflow: visible !important;
     margin: 0 !important;
-    transform: translateY(-18px) !important;
+    
   }
 }
 
 
 /* FIX: Keep the inner invitation card inside the envelope */
-.envelope-button > .envelope-card {
-  transform: translateY(0);
+/* Mobile card animation fix */
+@media screen and (max-width: 768px) {
+  #envelopeIntro .envelope-button > .envelope-card {
+    transform: translateY(14%) !important;
+    transition: transform 1s cubic-bezier(.2, .75, .25, 1) !important;
+  }
+
+  #envelopeIntro.is-opening .envelope-button > .envelope-card {
+    transform: translateY(-48%) !important;
+    transition-delay: 0.25s !important;
+  }
 }
+
 
 /* Fix: Keep footer text below the invitation button */
 #envelopeIntro .envelope-footer {
@@ -3944,16 +3954,16 @@ body {
   position: relative;
   z-index: 2;
 }
-/* FIX: Let the invitation card slide up on mobile */
+/* Mobile envelope card animation */
 @media screen and (max-width: 768px) {
   #envelopeIntro .envelope-card {
     transform: translateY(0) !important;
-    transition: transform 1s cubic-bezier(.2, .75, .25, 1);
+    transition: transform 1s cubic-bezier(.2, .75, .25, 1) !important;
   }
 
   #envelopeIntro.is-opening .envelope-card {
     transform: translateY(-48%) !important;
-    transition-delay: 0.25s;
+    transition-delay: 0.25s !important;
   }
 }
 /* Fix P-K logo spacing and heart visibility */
@@ -3971,3 +3981,28 @@ body {
   opacity: 1;
   visibility: visible;
 }
+/* FINAL FIX: Card should rise above envelope front */
+/* Mobile envelope opening animation */
+@media (max-width: 768px) {
+  .envelope-button {
+    overflow: visible;
+  }
+
+  .envelope-button > .envelope-card {
+    z-index: 1;
+    transform: translateY(0);
+    transition: transform 1.2s cubic-bezier(.2, .75, .25, 1);
+  }
+
+  .envelope-intro.is-opening .envelope-button > .envelope-card {
+    z-index: 3;
+    transform: translateY(-65%);
+    transition-delay: 0.2s;
+  }
+
+  .envelope-intro.is-opening .envelope-flap {
+    z-index: 0;
+    transform: rotateX(180deg);
+  }
+}
+  
